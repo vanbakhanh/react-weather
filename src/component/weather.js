@@ -28,12 +28,12 @@ class Weather extends React.Component {
 
               {
                 this.props.weather.icon !== undefined &&
-                <img className="image my-4" src={require(`./../img/icon/${this.props.weather.icon}.png`)} alt=""></img>
+                <img className="icon my-4" src={require(`../../public/images/icon/${this.props.weather.icon}.png`)} alt=""></img>
               }
 
               {
                 this.props.main.temp !== undefined &&
-                <h1 className="temp">{this.props.main.temp}°C</h1>
+                <h1 className="temp display-4">{this.props.main.temp.toFixed(0)}°C</h1>
               }
 
               {

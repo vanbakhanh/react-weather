@@ -35,14 +35,16 @@ const initialState = {
   sunset: undefined,
   visibility: undefined,
   clouds: undefined,
-  error: undefined
+  error: undefined,
+  background: undefined
 };
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-    this.getWeather = this.getWeather.bind(this)
+    this.getWeather = this.getWeather.bind(this);
+    this.getBackground = this.getBackground.bind(this)
   }
 
   getWeather = async (e) => {
@@ -66,16 +68,40 @@ class App extends Component {
         visibility: response.visibility,
         clouds: response.clouds.all,
         error: undefined
-      })
+      });
+      this.getBackground()
     } else {
       this.setState({ error: response.message })
-    };
-    console.log(this.state)
+    }
+  }
+
+  getBackground() {
+    const hours = new Date((this.state.date) * 1000).getHours();
+    if (hours >= 6 && hours < 12) {
+      this.setState({ background: 'day' })
+    } else if (hours >= 12 && hours < 18) {
+      this.setState({ background: 'noon' })
+    } else if (hours >= 18 && hours < 24) {
+      this.setState({ background: 'night' })
+    } else {
+      this.setState({ background: 'evening' })
+    }
+  }
+
+  componentWillMount() {
+    const hours = new Date().getHours();
+    if (hours >= 6 && hours < 18) {
+      this.setState({ background: 'default-day' })
+    } else {
+      this.setState({ background: 'default-night' })
+    }
   }
 
   render() {
+    const styles = { backgroundImage: `url('/images/background/${this.state.background}.png')` };
+
     return (
-      <div className="App">
+      <div className="App" style={styles}>
         <div className="container">
           <Titles />
           <Form loadWeather={this.getWeather} />
