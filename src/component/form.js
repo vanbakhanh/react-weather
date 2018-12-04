@@ -8,14 +8,12 @@ class Form extends React.Component {
           type="text"
           className="form-control mr-sm-2 mb-2 border-0 shadow"
           name="city"
-          placeholder="City"
-          defaultValue="Kansas" />
+          placeholder="City" />
         <input
           type="text"
           className="form-control mr-sm-2 mb-2 border-0 shadow"
           name="country"
-          placeholder="Country"
-          defaultValue="US" />
+          placeholder="Country" />
         <button
           type="submit"
           className="btn btn-primary mb-2 shadow">Get Weather</button>
