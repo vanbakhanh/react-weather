@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: weather
+    volumes:
+      - ./:/weather
+    ports:
+      - 80:3000

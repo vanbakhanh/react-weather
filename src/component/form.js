@@ -3,21 +3,19 @@ import React from 'react';
 class Form extends React.Component {
   render() {
     return (
-      <form className="form-inline d-flex justify-content-center mb-5" onSubmit={this.props.loadWeather}>
-        <input
-          type="text"
-          className="form-control mr-sm-2 mb-2 border-0 shadow"
-          name="city"
-          placeholder="City" />
-        <input
-          type="text"
-          className="form-control mr-sm-2 mb-2 border-0 shadow"
-          name="country"
-          placeholder="Country" />
-        <button
-          type="submit"
-          className="btn btn-primary mb-2 shadow">Get Weather</button>
-      </form>
+      <div className="row">
+        <form className="form-inline col-lg-12 mb-5 d-flex justify-content-center" onSubmit={this.props.loadWeather}>
+          <input
+            type="text"
+            className="form-control col-lg-4 col-md-12 m-1 border-0 shadow"
+            name="city"
+            placeholder="City"
+            required />
+          <button
+            type="submit"
+            className="btn btn-outline-light col-lg-2 col-md-12 m-1 shadow">Get Weather</button>
+        </form>
+      </div>
     )
   }
 }

@@ -50,8 +50,7 @@ class App extends Component {
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.city.value;
-    const country = e.target.country.value;
-    const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
+    const data = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     const response = await data.json();
     if (data.status === 200) {
       this.setState({
